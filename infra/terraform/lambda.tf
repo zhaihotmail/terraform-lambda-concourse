@@ -9,15 +9,22 @@ resource "random_id" "random" {
   byte_length = 8
 }
 
+data "archive_file" "zip_the_python_code" {
+  type        = "zip"
+  source_dir  = "./source_code/lambda_scripts/terraform_test.py"
+  output_path = "./source_code/lambda_scripts/terraform_test.zip"
+}
+
 resource "aws_lambda_function" "teraform_test" {
   function_name = "test3"
-  s3_bucket = "two00434-b"
-  s3_key    = "zips/terraform_test_abcd.zip"            #this is from build.sh which created terraform_test.zip
-  source_code_hash = "${base64sha256(file("./build/terraform_test_abcd.zip"))}"  # local path from where zip is uploaded to s3
+  #s3_bucket = "two00434-b"
+  #s3_key    = "zips/terraform_test_abcd.zip"            #this is from build.sh which created terraform_test.zip
+  #source_code_hash = "${base64sha256(file("./build/terraform_test_abcd.zip"))}"  # local path from where zip is uploaded to s3
   #triggers = random_id.random.hex
   # "main" is the filename within the zip file (main.js) and "handler"
   # is the name of the property under which the handler function was
   # exported in that file.
+  filename = "./source_code/lambda_scripts/terraform_test.zip"
   handler = "teraform_test.lambda_handler"
   runtime = "python3.8"
   timeout = "600"
