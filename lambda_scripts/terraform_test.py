@@ -10,3 +10,4 @@ def lambda_handler(event, context):
     boto3.resource('s3').Bucket('x').upload_file("/tmp/example.csv", 'teraform_test/' + "example.csv")
     print("I made some change here")
     print("change at 8:34am")
+    print("change at 9am")
