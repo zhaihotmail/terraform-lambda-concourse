@@ -13,6 +13,7 @@ resource "aws_lambda_function" "teraform_test" {
   function_name = "test3"
   s3_bucket = "two00434-b"
   s3_key    = "zips/terraform_test_abcd.zip"            #this is from build.sh which created terraform_test.zip
+  source_code_hash = "${base64sha256(file("${path.module}/../build/terraform_test_abcd.zip"))}"  # local path from where zip is uploaded to s3
   #triggers = random_id.random.hex
   # "main" is the filename within the zip file (main.js) and "handler"
   # is the name of the property under which the handler function was
