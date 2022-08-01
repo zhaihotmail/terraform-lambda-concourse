@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_lambda_function" "teraform_test" {
   function_name = "test3"
   s3_bucket = "two00434-b"
-  s3_key    = "zips/terraform_test_1234.zip"            #this is from build.sh which created terraform_test.zip
+  s3_key    = "zips/terraform_test_5678.zip"            #this is from build.sh which created terraform_test.zip
 
   # "main" is the filename within the zip file (main.js) and "handler"
   # is the name of the property under which the handler function was
