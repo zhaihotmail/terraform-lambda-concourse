@@ -11,4 +11,5 @@ def lambda_handler(event, context):
     print("I made some change here")
     print("change at 8:34am")
     print("change at 9am")
-    print("change at 9:12")
+    print("change at 9:12am")
+    print("cahnge at 10:55am")
