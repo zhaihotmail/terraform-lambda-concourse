@@ -12,8 +12,18 @@ resource "random_id" "random" {
 data "archive_file" "zip_the_python_code" {
   type        = "zip"
   source_dir  = "${path.module}/../../lambda_scripts/"
-  output_path = "./source_code/zipped/terraform_test.zip"
+  output_path = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
 }
+
+
+resource "random_id" "id" {
+	  byte_length = 8
+}
+
+#resource "aws_lambda_function" "lambda" {
+#	function_name = "${random_id.id.hex}-function"
+#	# ...
+#}
 
 resource "aws_lambda_function" "teraform_test" {
   function_name = "test3"
@@ -24,7 +34,7 @@ resource "aws_lambda_function" "teraform_test" {
   # "main" is the filename within the zip file (main.js) and "handler"
   # is the name of the property under which the handler function was
   # exported in that file.
-  filename = "./source_code/zipped/terraform_test.zip"
+  filename = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
   handler = "teraform_test.lambda_handler"
   runtime = "python3.8"
   timeout = "600"
