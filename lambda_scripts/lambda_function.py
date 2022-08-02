@@ -3,7 +3,6 @@ import sys, os
 import boto3
 
 s3 = boto3.client('s3')
-s3 = boto3.resource('s3')
 
 def lambda_handler(event, context):
     s3.Bucket('x').download_file("abc.csv", "/tmp/example.csv")
@@ -17,3 +16,4 @@ def lambda_handler(event, context):
     print("finally at 6:10pm")
     print("6:31!!!!")
     print("why no change")
+    print("edit at night")
