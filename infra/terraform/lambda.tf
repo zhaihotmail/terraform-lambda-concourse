@@ -23,7 +23,7 @@ resource "aws_lambda_function" "teraform_test" {
   #source_code_hash = filebase64sha256("./source_code/zipped/terraform_test.zip")
   environment {
     variables = {
-      api_key1="abcdefeg123455",
+      api_key1="abcdefeg123455"
       api_key2="asdfasdfgafgk354"
     }
   }
