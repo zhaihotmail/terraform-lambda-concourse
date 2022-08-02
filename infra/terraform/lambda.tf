@@ -31,7 +31,7 @@ resource "aws_lambda_function" "teraform_test" {
   # "main" is the filename within the zip file (main.js) and "handler"
   # is the name of the property under which the handler function was
   # exported in that file.
-  #filename = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
+  filename = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
   handler = "teraform_test.lambda_handler"
   runtime = "python3.8"
   timeout = "600"
