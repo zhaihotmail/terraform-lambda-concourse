@@ -35,7 +35,7 @@ resource "aws_lambda_function" "teraform_test" {
   # exported in that file.
   #filename = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
   filename="./source_code/zipped/terraform_test.zip"
-  handler = "teraform_test.lambda_handler"
+  handler = "lambda_function.lambda_handler"
   runtime = "python3.8"
   timeout = "600"
   memory_size = 3008
