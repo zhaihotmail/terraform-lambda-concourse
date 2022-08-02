@@ -20,7 +20,7 @@ resource "aws_lambda_function" "teraform_test" {
   timeout = "600"
   memory_size = 3008
   role = "arn:aws:iam::557563337688:role/zhai-lambda-role"
-  #source_code_hash = filebase64sha256("./source_code/zipped/terraform_test.zip")
+  source_code_hash = filebase64sha256("./source_code/zipped/terraform_test.zip")
   environment {
     variables = {
       api_key1="abcdefeg123455"
