@@ -3,12 +3,6 @@ provider "aws" {
   #profile = "saml"
 }
 
-#resource "random_id" "id" {
-#	  byte_length = 8
-#}
-
-
-
 data "archive_file" "zip_the_python_code" {
   type        = "zip"
   source_dir  = "${path.module}/../../lambda_scripts/"
@@ -48,5 +42,4 @@ resource "aws_lambda_function" "teraform_test" {
       api_key2="asdfasdfgafgk354"
     }
   }
-
 }
