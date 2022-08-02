@@ -17,3 +17,4 @@ def lambda_handler(event, context):
     print("6:31!!!!")
     print("why no change")
     print("edit at night")
+    print("edit at midnight")
