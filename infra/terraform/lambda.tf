@@ -11,9 +11,9 @@ provider "aws" {
 
 data "archive_file" "zip_the_python_code" {
   type        = "zip"
-  #source_dir  = "${path.module}/../../lambda_scripts/"
+  source_dir  = "${path.module}/../../lambda_scripts/"
   #output_path = "./source_code/zipped/terraform_test-${random_id.id.hex}.zip"
-  source_dir="./source_code/lambda_scripts/"
+  #source_dir="./source_code/lambda_scripts/"
   output_path = "./source_code/zipped/terraform_test.zip"
 }
 
@@ -43,8 +43,10 @@ resource "aws_lambda_function" "teraform_test" {
   #source_code_hash = filebase64sha256("./source_code/zipped/terraform_test-${random_id.id.hex}.zip")
   source_code_hash = filebase64sha256("./source_code/zipped/terraform_test.zip")
   environment {
-    api_key1="abcdefeg123455"
-    api_key2="asdfasdfgafgk354"
+    variables = {
+      api_key1="abcdefeg123455",
+      api_key2="asdfasdfgafgk354"
+    }
   }
 
 }
