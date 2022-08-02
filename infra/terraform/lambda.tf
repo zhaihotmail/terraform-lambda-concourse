@@ -2,12 +2,12 @@ provider "aws" {
   region = "us-west-1"
   #profile = "saml"
 }
-resource "random_id" "random" {
-  keepers = {
-    uuid = uuid()
-  }
-  byte_length = 8
+
+resource "random_id" "id" {
+	  byte_length = 8
 }
+
+
 
 data "archive_file" "zip_the_python_code" {
   type        = "zip"
@@ -16,9 +16,6 @@ data "archive_file" "zip_the_python_code" {
 }
 
 
-resource "random_id" "id" {
-	  byte_length = 8
-}
 
 #resource "aws_lambda_function" "lambda" {
 #	function_name = "${random_id.id.hex}-function"
